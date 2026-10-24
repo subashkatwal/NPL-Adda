@@ -1,0 +1,16 @@
+# Enables local development: live code mount, auto-migrate, Django dev server.
+services:
+  web:
+    environment:
+      DJANGO_DEBUG: "True"
+    # The autoreloader can crash on transient bind-mount I/O errors (Windows host).
+    restart: unless-stopped
+    volumes:
+      - ./npl_adda:/app
+    command: >
+      sh -c "python manage.py migrate --noinput &&
+             exec python manage.py runserver 0.0.0.0:8000"
+
+  db:
+    ports:
+      - "${POSTGRES_HOST_PORT:-5432}:5432"

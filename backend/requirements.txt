@@ -1,0 +1,33 @@
+# Web framework & API
+Django>=5.2,<5.3
+djangorestframework>=3.16,<3.17
+drf-spectacular>=0.28,<1.0
+django-filter>=25.1,<26
+django-cors-headers>=4.7,<5
+djangorestframework-simplejwt>=5.5,<6
+
+# Google sign-in: verifies Google ID tokens server-side
+google-auth>=2.35,<3
+requests>=2.32,<3
+
+# Image uploads: decode, validate and re-encode fan meme images server-side
+Pillow>=11,<12
+
+# Media storage on free hosting: uploaded and rendered images live on Cloudinary when configured
+cloudinary>=1.41,<2
+
+# Data stores
+psycopg[binary,pool]>=3.2,<4
+redis>=5.2,<7
+
+# AI agents
+langchain>=1.0,<2
+langgraph>=1.0,<2
+
+# Serving
+gunicorn>=23,<24
+whitenoise>=6.8,<7
+
+# Testing
+pytest>=8.3,<9
+pytest-django>=4.9,<5
