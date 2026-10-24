@@ -1,4 +1,32 @@
-# Local tooling
+# Secrets: real env files stay local; only the *.example templates are committed
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# Django
+staticfiles/
+media/
+*.sqlite3
+
+# Node / Vite
+node_modules/
+dist/
+coverage/
+*.log
+npm-debug.log*
+
+# Local tooling, editors, OS
 .claude/
 .vscode/
 .idea/
