@@ -9,7 +9,7 @@ services:
     region: singapore  # same region as the Neon database (AWS Asia Pacific 1)
     rootDir: backend
     dockerfilePath: ./Dockerfile
-    healthCheckPath: /admin/login/
+    healthCheckPath: /api/v1/health
     envVars:
       - key: DJANGO_SECRET_KEY
         generateValue: true
@@ -25,10 +25,10 @@ services:
         value: "True"
       - key: WEB_CONCURRENCY
         value: "1"
+      # No pool: a pool holds connections open forever, so Neon's compute could never scale to zero and
+      # would use up the free compute hours. Plain connections close after 60 s idle.
       - key: DB_POOL_MAX_SIZE
-        value: "4"
-      - key: DB_POOL_MIN_SIZE
-        value: "1"
+        value: "0"
       - key: POSTGRES_SSLMODE
         value: require
       - key: POSTGRES_HOST
