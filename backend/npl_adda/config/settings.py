@@ -125,8 +125,8 @@ DATABASES = {
 }
 
 # Cache (Redis): sessions-independent cache for expensive public reads such as leaderboards.
-# REDIS_URL=none falls back to a per-process memory cache (single-instance free hosting without Redis).
-_redis_url = env("REDIS_URL", "redis://localhost:6379/0")
+# REDIS_URL=none (or empty) falls back to a per-process memory cache (single-instance free hosting without Redis).
+_redis_url = env("REDIS_URL", "redis://localhost:6379/0").strip() or "none"
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.redis.RedisCache",

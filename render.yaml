@@ -39,8 +39,9 @@ services:
         sync: false
       - key: POSTGRES_PASSWORD
         sync: false
+      # In-process memory cache (no Redis needed for one worker). For Upstash, replace with its rediss:// URL.
       - key: REDIS_URL
-        sync: false
+        value: none
       - key: GOOGLE_CLIENT_ID
         sync: false
       - key: GOOGLE_GEMINI_API_KEY
