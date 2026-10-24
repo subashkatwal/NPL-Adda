@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="NPL Adda">
+  <rect width="64" height="64" rx="12" fill="#0B1020"/>
+  <!-- Two leaning stumps form an "A"; the bail is its crossbar; the ball sits at the apex. -->
+  <path d="M18 52 L30 14" stroke="#C8FF4D" stroke-width="6" stroke-linecap="round"/>
+  <path d="M46 52 L34 14" stroke="#C8FF4D" stroke-width="6" stroke-linecap="round"/>
+  <path d="M22 38 H42" stroke="#FF7043" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="32" cy="11" r="5" fill="#F5F7FA"/>
+</svg>
