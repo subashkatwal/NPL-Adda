@@ -42,8 +42,11 @@ Replace `createsuperuser` with `seed_npl_teams` or `seed_npl_2026_fixtures` to l
 In Google Cloud Console add `https://npl-adda.onrender.com` as an authorized JavaScript origin.
 
 ## Free-tier caveats
-- The API sleeps after ~15 minutes idle; the first request then takes 30–60 s. A free uptime pinger
-  (UptimeRobot, cron-job.org) hitting `https://npl-adda-api.onrender.com/admin/login/` every 10 minutes keeps
-  it awake. The static site never sleeps.
+- The API sleeps after ~15 minutes idle; the first request then takes 30–60 s. The `Keep API awake`
+  GitHub Actions workflow (`.github/workflows/keep-alive.yml`) pings `/api/v1/health` every 10 minutes to
+  prevent that. GitHub can delay scheduled runs, so for a stricter guarantee also add a free UptimeRobot
+  monitor on the same URL. The static site never sleeps.
+- The health check never queries the database and the API runs without a connection pool, so Neon's free
+  compute still scales to zero when nobody uses the site.
 - Render's disk is ephemeral: without the Cloudinary variables, uploaded memes and avatars are lost on
   redeploy/restart.
