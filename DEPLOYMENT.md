@@ -28,7 +28,15 @@ Fill in the prompted values:
   `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`, optionally `GOOGLE_GEMINI_API_KEY`
 - Frontend: `VITE_GOOGLE_CLIENT_ID`
 
-Migrations run on every API start. Create an admin from the API's Render shell: `python manage.py createsuperuser`.
+Migrations run on every API start. Render's free plan has no shell, so run one-off commands (admin user, seed
+data) from your machine against Neon, from `backend/`:
+
+```sh
+docker compose run --rm --no-deps -e POSTGRES_HOST=<neon-host> -e POSTGRES_DB=neondb -e POSTGRES_USER=neondb_owner \
+  -e POSTGRES_PASSWORD=<password> -e POSTGRES_SSLMODE=require web python manage.py createsuperuser
+```
+
+Replace `createsuperuser` with `seed_npl_teams` or `seed_npl_2026_fixtures` to load teams and fixtures.
 
 ## 5. Google sign-in
 In Google Cloud Console add `https://npl-adda.onrender.com` as an authorized JavaScript origin.
